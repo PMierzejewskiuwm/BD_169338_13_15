@@ -1,0 +1,62 @@
+Zadanie 1:
+a)DELETE FROM postac WHERE wiek='72';
+  DELETE FROM postac WHERE wiek='53';
+
+b)ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+  ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+  ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+  ALTER TABLE postac MODIFY id_postaci INT NOT NULL;
+  ALTER TABLE postac DROP PRIMARY KEY;
+
+Zadanie 2:
+    
+ ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+ ALTER TABLE postac DROP INDEX nazwa;
+
+
+a)ALTER TABLE postac ADD pesel VARCHAR(11) NOT NULL PRIMARY KEY;
+b)ALTER TABLE postac MODIFY rodzaj ENUM('wiking','ptak','kobieta','syrena');
+c)INSERT INTO postac VALUES(9, 'Gertruda Nieszczera', 'syrena', '1687-09-05', '30', 'null', 'null', '16789234765');
+
+Zadanie 3:
+a) UPDATE postac SET statek='Perla' WHERE nazwa LIKE '%a%';
+b) UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE (DATE(data_wodowania) BETWEEN '1900-01-01' AND '2000-01-01');
+c) SELECT * FROM postac WHERE wiek < 1000;
+
+
+
+Zadanie 4:
+a) ALTER TABLE postac MODIFY rodzaj ENUM('wiking','ptak','kobieta','syrena','waz');
+INSERT INTO postac VALUES(10, 'Loko', 'waz', '1698-05-18', '16','NULL','NULL', '82752846912');
+b)CREATE TABLE Marynarz(id_marynarza INT NOT NULL, nazwa VARCHAR (40), rodzaj ENUM('wiking','ptak','kobieta','syrena','waz'), data_ur DATE, wiek INT UNSIGNED, funkcja VARCHAR (10), statek varchar(20), pesel VARCHAR(11) NOT NULL);
+
+INSERT INTO Marynarz VALUES(1, 'Bjorn', 'wiking', '1658-07-08', '45', 'kapitan', 'Perla', '83429538326');
+INSERT INTO Marynarz VALUES(2, 'Drozd', 'ptak', '1683-10-28', '30', 'NULL', 'Drakkar', '12429538326');
+INSERT INTO Marynarz VALUES(3, 'Tesciowa', 'kobieta', '1657-09-17', '88', 'NULL', 'Perla', '92225135321');
+INSERT INTO Marynarz VALUES(4, 'Agnar', 'wiking', '1634-04-30', '38', 'NULL', 'Perla', '36287548762');
+INSERT INTO Marynarz VALUES(5, 'Alfarin', 'wiking', '1696-08-14', '46', 'NULL', 'Perla', '57295483640');
+INSERT INTO Marynarz VALUES(7, 'Folkmar', 'wiking', '1611-09-11', '49', 'NULL', 'Perla', '82649170045');
+INSERT INTO Marynarz VALUES(9, 'Gertruda Nieszczera', 'syrena', '1687-09-05', '30', 'NULL', 'Perla', '08238871764');
+
+
+ALTER TABLE Marynarz ADD PRIMARY KEY(pesel);
+ALTER TABLE Marynarz ADD FOREIGN KEY (statek) REFERENCES statek (nazwa_statku);
+
+Zadanie 5:
+ALTER TABLE Marynarz DROP FOREIGN KEY Marynarz_ibfk_1;
+a)UPDATE Marynarz set statek='NULL' WHERE id_marynarza BETWEEN 1 AND 10;
+  UPDATE postac set statek='NULL' WHERE id_postaci BETWEEN 1 AND 10;
+
+b) DELETE FROM postac WHERE wiek=46;
+   DELETE FROM Marynarz WHERE wiek=46;
+c)DELETE FROM statek WHERE max_ladownosc BETWEEN 490 AND 650;
+d)DROP TABLE statek;
+e)CREATE TABLE zwierz (id_zwierza INT NOT NULL AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(30), wiek INT UNSIGNED);
+
+f)INSERT INTO zwierz(id_zwierza, nazwa, wiek) SELECT id_postaci, nazwa, wiek FROM postac WHERE id_postaci=2;
+INSERT INTO zwierz(id_zwierza, nazwa, wiek) SELECT id_postaci, nazwa, wiek FROM postac WHERE id_postaci=9;
+INSERT INTO zwierz(id_zwierza, nazwa, wiek) SELECT id_postaci, nazwa, wiek FROM postac WHERE id_postaci=10;
+
+
+
+
