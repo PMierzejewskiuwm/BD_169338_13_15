@@ -1,0 +1,58 @@
+Zadanie 1.
+1.
+CREATE TABLE mierzejewskip.kreatura LIKE wikingowie.kreatura;
+INSERT INTO mierzejewskip.kreatura SELECT * FROM wikingowie.kreatura;
+CREATE TABLE mierzejewskip.zasob LIKE wikingowie.zasob;
+INSERT INTO mierzejewskip.zasob SELECT * FROM wikingowie.zasob;
+CREATE TABLE mierzejewskip.ekwipunek LIKE wikingowie.ekwipunek;
+INSERT INTO mierzejewskip.ekwipunek SELECT * FROM wikingowie.ekwipunek;
+
+2.SELECT * FROM zasob;
+
+3.SELECT * FROM zasob WHERE rodzaj='jedzenie';
+
+4.SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=1;
+  SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=3;
+  SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=5;
+
+
+
+
+Zadanie 2;
+
+1.SELECT * FROM kreatura WHERE(nazwa != 'wiedzma' AND udzwig >= 50);
+
+2. SELECT * FROM zasob WHERE waga BETWEEN 2 AND 5;
+
+3.SELECT * FROM kreatura WHERE(nazwa LIKE '%or%' AND udzwig BETWEEN 30 AND 70);
+
+Zadanie 3.
+
+1. SELECT * FROM zasob WHERE MONTH(dataPozyskania)=7;
+   SELECT * FROM zasob WHERE MONTH(dataPozyskania)=8;
+
+2.SELECT * FROM zasob WHERE rodzaj IS NOT NULL ORDER BY waga;
+
+3. SELECT * FROM kreatura ORDER BY dataUR LIMIT 5;
+
+Zadanie 4.
+
+1.SELECT DISTINCT rodzaj FROM zasob;
+
+2.SELECT CONCAT(nazwa, rodzaj) FROM kreatura WHERE rodzaj LIKE 'wi%';
+
+3.SELECT (ilosc*waga) FROM zasob WHERE YEAR(dataPozyskania) BETWEEN 2000 AND 2007;
+
+Zadanie 5.
+
+1.SELECT waga * 0.7 FROM zasob;
+  SELECT waga * 0.3 FROM zasob;
+
+
+2.SELECT * FROM zasob WHERE rodzaj IS NULL;
+
+3.SELECT DISTINCT rodzaj FROM zasob WHERE nazwa LIKE 'Ba%' OR '%os';
+
+4.SELECT DISTINCT rodzaj FROM zasob WHERE (nazwa LIKE 'Ba%' OR '%os') ORDER BY nazwa;
+
+
