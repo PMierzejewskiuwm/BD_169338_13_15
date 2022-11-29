@@ -1,0 +1,13 @@
+Zadanie 1.
+
+1. SELECT AVG(waga) FROM kreatura WHERE rodzaj='wiking';
+ 
+2. SELECT AVG(waga) FROM kreatura GROUP BY rodzaj;
+
+3. SELECT AVG(YEAR(dataUr)) FROM kreatura;
+
+Zadanie 2.
+
+1. SELECT SUM(waga) FROM kreatura GROUP BY rodzaj;
+
+2. 
