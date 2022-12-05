@@ -11,9 +11,7 @@ INSERT INTO mierzejewskip.ekwipunek SELECT * FROM wikingowie.ekwipunek;
 
 3.SELECT * FROM zasob WHERE rodzaj='jedzenie';
 
-4.SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=1;
-  SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=3;
-  SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=5;
+4.SELECT idZasobu, ilosc FROM ekwipunek WHERE idKreatury=1 AND 3 AND 5;
 
 
 
