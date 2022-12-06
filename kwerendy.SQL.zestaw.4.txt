@@ -10,4 +10,22 @@ Zadanie 2.
 
 1. SELECT SUM(waga) FROM kreatura GROUP BY rodzaj;
 
-2. 
+2. SELECT AVG(waga) FROM zasob GROUP BY nazwa HAVING COUNT(ilosc >=4) AND SUM(waga) > 10;
+
+3. SELECT nazwa FROM zasob GROUP BY rodzaj HAVING COUNT(ilosc > 1);
+
+Zadanie 3.
+
+1.SELECT ekwipunek.ilosc AS ilosc_zasobow, ekwipunek.idKreatury FROM ekwipunek INNER JOIN kreatura ON ekwipunek.idKreatury=kreatura.idKreatury;
+
+2.SELECT zasob.nazwa, zasob.idZasobu, ekwipunek.idKreatury FROM zasob INNER JOIN ekwipunek ON ekwipunek.idZasobu = zasob.idZasobu 
+INNER JOIN kreatura ON ekwipunek.idKreatury = kreatura.idKreatury;
+
+3.SELECT kreatura.idKreatury, ekwipunek.idEkwipunku FROM kreatura LEFT JOIN ekwipunek ON ekwipunek.idKreatury = NULL;
+
+Zadanie 4.
+
+1.SELECT nazwa,idKreatury FROM kreatura WHERE dataUR BETWEEN '1670-01-01' AND '1680-01-01';
+
+
+SELECT kreatura.nazwa, kreatura.idKreatury FROM kreatura WHERE dataUR BETWEEN '1670-01-01' AND '1680-01-01' INNER JOIN  kreatura.nazwa = zasob.nazwa; 
