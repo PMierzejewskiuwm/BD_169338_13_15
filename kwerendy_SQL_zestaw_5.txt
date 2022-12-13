@@ -1,0 +1,15 @@
+Zadanie 1.
+
+1.INSERT INTO mierzejewskip.kreatura SELECT * FROM wikingowie.kreatura;
+ CREATE TABLE mierzejewskip.uczestnicy LIKE wikingowie.uczestnicy;
+ INSERT INTO mierzejewskip.uczestnicy SELECT * FROM wikingowie.uczestnicy;
+ CREATE TABLE mierzejewskip.etapy_wyprawy LIKE wikingowie.etapy_wyprawy;
+ INSERT INTO mierzejewskip.etapy_wyprawy SELECT * FROM wikingowie.etapy_wyprawy;
+ CREATE TABLE mierzejewskip.sektor LIKE wikingowie.sektor;
+ INSERT INTO mierzejewskip.sektor SELECT * FROM wikingowie.sektor;
+ CREATE TABLE mierzejewskip.wyprawa LIKE wikingowie.wyprawa;
+ INSERT INTO mierzejewskip.wyprawa SELECT * FROM wikingowie.wyprawa;
+
+2.SELECT kreatura.nazwa, kreatura.idKreatury FROM kreatura JOIN uczestnicy
+ON kreatura.idKreatury=uczestnicy.id_uczestnika HAVING COUNT(idKreatury IS NULL);
+
