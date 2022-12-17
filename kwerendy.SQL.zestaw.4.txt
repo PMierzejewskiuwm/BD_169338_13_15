@@ -25,7 +25,12 @@ INNER JOIN kreatura ON ekwipunek.idKreatury = kreatura.idKreatury;
 
 Zadanie 4.
 
-1.SELECT nazwa,idKreatury FROM kreatura WHERE dataUR BETWEEN '1670-01-01' AND '1680-01-01';
+1.SELECT kreatura.nazwa, zasob.nazwa FROM kreatura, zasob NATURAL JOIN ekwipunek WHERE dataUR BETWEEN '1670-01-01' AND '1680-01-01';
 
+2.SELECT kreatura.nazwa FROM kreatura JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury JOIN zasob ON zasob.idZasobu=ekwipunek.idZasobu WHERE zasob.rodzaj='jedzenie' ORDER BY kreatura.dataUr LIMIT 5;
 
-SELECT kreatura.nazwa, kreatura.idKreatury FROM kreatura WHERE dataUR BETWEEN '1670-01-01' AND '1680-01-01' INNER JOIN  kreatura.nazwa = zasob.nazwa; 
+3.SELECT p.nazwa AS nazwa1, s.nazwa AS nazwa2 FROM kreatura p JOIN kreatura s ON p.idKreatury=s.idKreatury WHERE(p.idKreatury - s.idKreatury = 5 OR s.idKreatury - p.idKreatury = 5);
+
+Zadanie 5.
+
+1.
