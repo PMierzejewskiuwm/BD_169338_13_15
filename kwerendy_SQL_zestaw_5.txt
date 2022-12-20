@@ -13,3 +13,10 @@ Zadanie 1.
 2.SELECT kreatura.nazwa, kreatura.idKreatury FROM kreatura JOIN uczestnicy
 ON kreatura.idKreatury=uczestnicy.id_uczestnika HAVING COUNT(idKreatury IS NULL);
 
+3.SELECT w.nazwa, SUM(e.ilosc) FROM wyprawa w, ekwipunek e JOIN kreatura ON kreatura.idKreatury=e.idKreatury;
+
+
+Zadanie 2.
+
+1.SELECT COUNT(id_uczestnika) AS ilosc_uczestnikow FROM uczestnicy WHERE id_wyprawy=1;
+SELECT w.nazwa, k.nazwa, (SELECT COUNT(id_uczestnika) AS ilosc_uczestnikow FROM uczestnicy WHERE id_wyprawy=1) FROM wyprawa w, kreatura k JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika;
