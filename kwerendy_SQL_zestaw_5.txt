@@ -20,3 +20,14 @@ Zadanie 2.
 
 1.SELECT COUNT(id_uczestnika) AS ilosc_uczestnikow FROM uczestnicy WHERE id_wyprawy=1;
 SELECT w.nazwa, k.nazwa, (SELECT COUNT(id_uczestnika) AS ilosc_uczestnikow FROM uczestnicy WHERE id_wyprawy=1) FROM wyprawa w, kreatura k JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika;
+
+
+
+
+
+
+Zadanie 5;
+
+SELECT k.nazwa, DATEDIFF(w.data_rozpoczecia, k.dataUr) FROM kreatura k, wyprawa w JOIN etapy_wyprawy ON w.id_wyprawy=etapy_wyprawy.idWyprawy JOIN sektor
+ON etapy_wyprawy.sektor=sektor.id_sektora WHERE sektor.nazwa="Chatka dziadka";
+
