@@ -1,0 +1,55 @@
+Zadanie 1.
+
+delimiter // 
+CREATE TRIGGER waga_check BEFORE INSERT ON kreatura FOR EACH ROW IF new.waga > 0 THEN SET new.waga = new.waga; END IF; 
+// delimiter;
+
+Zadanie 2.
+CREATE TABLE archiwum_wyprawy (id_wyprawy INT PRIMARY KEY AUTO_INCREMENT, nazwa VARCHAR(200), data_rozpoczecia DATE, data_zakonczenia DATE, kierownik VARCHAR (50));
+
+delimiter //
+CREATE TRIGGER insert_records AFTER DELETE ON wyprawa FOR EACH ROW BEGIN 
+INSERT INTO archiwum_wyprawy SET id_wyprawy = wyprawa.id_wyprawy;
+INSERT INTO archiwum_wyprawy SET nazwa = wyprawa.nazwa;
+INSERT INTO archiwum_wyprawy SET data_rozpoczecia = wyprawa.data_rozpoczecia;
+INSERT INTO archiwum wyprawy SET data_zakonczenia = wyprawa.data_zakonczenia;
+END; //
+
+delimiter //
+CREATE TRIGGER insert_records2 AFTER DELETE ON kreatura FOR EACH ROW BEGIN
+INSERT INTO archiwum_wyprawy SET kierownik = kreatura.nazwa;
+END; //
+
+Zadanie 3.
+
+1.
+delimiter //
+CREATE PROCEDURE eliksir_sily(OUT udzwig INT UNSIGNED, idKreatury INT) BEGIN
+SELECT udzwig * 1.2 FROM kreatura;
+END; //
+
+2.CREATE FUNCTION upper(n VARCHAR)
+RETURNS UPPER(n) BEGIN
+DECLARE n VARCHAR;
+SET n = UPPER(n);         
+RETURN n;
+END; //
+
+
+Zadanie 4.
+
+1.
+CREATE TABLE system_alarmowy
+(id_alarmu INT not null primary key auto_increment, 
+wiadomosc VARCHAR(40))
+
+2.
+delimiter //
+CREATE TRIGGER alarm BEFORE
+UPDATE ON wyprawa
+FOR EACH ROW
+IF wyprawa.id_uczestnika = 14 AND wyprawa.id_sektora = 7 THEN
+UPDATE system_alarmowy
+SET wiadomosc = 'Tesciowa nadchodzi!!!' WHERE id_alarmu = 1;
+END IF;
+//
